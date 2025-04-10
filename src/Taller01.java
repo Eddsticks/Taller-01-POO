@@ -47,8 +47,18 @@ public class Taller01 {
             case 1 -> generarMatriz();
             case 2 -> llenarMatriz(matriz);
             case 3 -> imprimirFila(matriz);
-            case 4 -> matrizCero(matriz);
-            case 5 -> System.out.println("Saliendo...");
+            case 4 -> {
+                if (!verificarMatrizCreada()) {
+                    System.out.println("No hay matriz ingresada. No se puede acceder.\n");
+                    menu();
+                } else {
+                    matrizCero(matriz);
+                }
+            }
+            case 5 -> {
+                System.out.println("Saliendo...");
+                System.exit(0);
+            }
             default -> System.out.println("Opción no reconocida.");
         }
     }
