@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Taller01 {
@@ -21,7 +22,7 @@ public class Taller01 {
 
     private static void mostrarOpciones() {
         System.out.println("=== Gestor de Matrices MxN ====");
-        System.out.println("1. Generar Matriz.\n2. Llenar Matriz. \n3. Ver Matriz. \n4. Verificar Matriz 0. \n5. Salir del sistema.");
+        System.out.println("1. Generar Matriz.\n2. Llenar Matriz. \n3. Ver Matriz. \n4. Verificar Matriz 0. \n5. Eliminar Matriz. \n6. Salir.");
     }
 
     private static int obtenerOpcion() {
@@ -44,7 +45,7 @@ public class Taller01 {
     private static void ejecutarOpcion(int opcion) {
         switch (opcion) {
             case 1 -> generarMatriz();
-            case 2 -> System.out.println("Llenar Matriz");
+            case 2 -> llenarMatriz(matriz);
             case 3 -> System.out.println("Ver Matriz");
             case 4 -> System.out.println("Verificar Matriz 0");
             case 5 -> System.out.println("Eliminar Matriz:");
@@ -95,5 +96,19 @@ public class Taller01 {
             }
         }
         return numero;
+    }
+
+    private static void llenarMatriz(int[][] matriz) {
+        if (!verificarMatrizCreada()) {
+            System.out.println("No hay matriz ingresada. No se puede acceder.\n");
+            return;
+        }
+        Random random = new Random();
+        for(int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                matriz[i][j] = random.nextInt(10);
+            }
+        }
+        System.out.println("Matriz rellenada con éxito.\n");
     }
 }
