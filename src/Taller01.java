@@ -53,8 +53,6 @@ public class Taller01 {
         }
     }
 
-
-
     private static void generarMatriz(){
         if (verificarMatrizCreada()) {
             System.out.println("Ya hay una matriz generada, ¿Desea reemplazarla? (s/n)");
