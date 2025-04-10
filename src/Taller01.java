@@ -22,17 +22,17 @@ public class Taller01 {
 
     private static void mostrarOpciones() {
         System.out.println("=== Gestor de Matrices MxN ====");
-        System.out.println("1. Generar Matriz.\n2. Llenar Matriz. \n3. Ver Matriz. \n4. Verificar Matriz 0. \n5. Eliminar Matriz. \n6. Salir.");
+        System.out.println("1. Generar Matriz.\n2. Llenar Matriz. \n3. Ver Matriz. \n4. Verificar Matriz 0. \n5. Salir.");
     }
 
     private static int obtenerOpcion() {
         int opcion = -1;
-        while (opcion < 1 || opcion > 6) {
+        while (opcion < 1 || opcion > 5) {
             System.out.println("Ingrese un comando: ");
             try {
                 String entrada = scanner.nextLine();
                 opcion = Integer.parseInt(entrada);
-                if (opcion < 1 || opcion > 6) {
+                if (opcion < 1 || opcion > 5) {
                     System.out.println("Opción no validada. Reintentar");
                 }
             } catch (NumberFormatException e) {
@@ -47,9 +47,8 @@ public class Taller01 {
             case 1 -> generarMatriz();
             case 2 -> llenarMatriz(matriz);
             case 3 -> imprimirFila(matriz);
-            case 4 -> System.out.println("Verificar Matriz 0");
-            case 5 -> System.out.println("Eliminar Matriz:");
-            case 6 -> System.out.println("Saliendo...");
+            case 4 -> matrizCero(matriz);
+            case 5 -> System.out.println("Saliendo...");
             default -> System.out.println("Opción no reconocida.");
         }
     }
@@ -112,11 +111,16 @@ public class Taller01 {
         System.out.println("Matriz rellenada con éxito.\n");
     }
     private static void imprimirFila(int[][] matriz) {
+        if (!verificarMatrizCreada()) {
+            System.out.println("No hay matriz ingresada. No se puede acceder.\n");
+            return;
+        }
         int filas = matriz.length;
         int filaDeseada = -1;
-        while (filaDeseada < 0 || filaDeseada >= filas) {
+        while (filaDeseada < 0) {
             System.out.println("Introduce el número de fila a imprimir. (0 a " + (filas - 1) + "): ");
             try {
+                filaDeseada = Integer.parseInt(scanner.nextLine());
                 if (filaDeseada < 0 || filaDeseada >= filas) {
                     System.out.println("Fila fuera del rango");
                 }
@@ -126,8 +130,21 @@ public class Taller01 {
             }
             System.out.println("Fila " + filaDeseada + ": ");
             for (int j = 0; j < matriz[filaDeseada].length; j++) {
-                System.out.println(matriz[filaDeseada][j] + "\t\n");
+                System.out.println(matriz[filaDeseada][j] + "\t");
             }
         }
+    }
+
+    private static boolean matrizCero(int[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (matriz[i][j] != 0) {
+                    System.out.println("La Matriz no es Matriz Cero.\n");
+                    return false;
+                }
+            }
+        }
+        System.out.println("La Matriz es Matriz cero.\n");
+        return true;
     }
 }
