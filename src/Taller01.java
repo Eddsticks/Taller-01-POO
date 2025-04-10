@@ -15,8 +15,8 @@ public class Taller01 {
     }
 
     private static void mostrarOpciones() {
-        System.out.println("---- GESTOR DE PISTOLAS IMPERIAL ----");
-        System.out.println("1. Agregar Pistola.\n2. Quitar Pistola. \n3. Generar Listado. \n4. Buscar Pistola. \n5. Salir del sistema.");
+        System.out.println("=== Gestor de Matrices MxN ====");
+        System.out.println("1. Generar Matriz.\n2. Llenar Matriz. \n3. Ver Matriz. \n4. Verificar Matriz 0. \n5. Salir del sistema.");
     }
 
     private static int obtenerOpcion() {
@@ -38,12 +38,21 @@ public class Taller01 {
 
     private static void ejecutarOpcion(int opcion) {
         switch (opcion) {
-            case 1 -> System.out.println("Función 1");
-            case 2 -> System.out.println("Función 2");
-            case 3 -> System.out.println("Función 3");
-            case 4 -> System.out.println("Función 4");
+            case 1 -> System.out.println("Generar Matriz");
+            case 2 -> System.out.println("Llenar Matriz");
+            case 3 -> System.out.println("Ver Matriz");
+            case 4 -> System.out.println("Verificar Matriz 0");
             case 5 -> System.out.println("Saliendo...");
             default -> System.out.println("Opción no reconocida.");
         }
+    }
+
+    private static int[][] generarMatriz(int m, int n){
+
+    }
+
+    private static boolean validarDimensiones(int m, int n){
+        return m > 0 && n > 0;
+
     }
 }
